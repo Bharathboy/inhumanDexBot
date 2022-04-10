@@ -60,7 +60,7 @@ def get_bot_data(app, message):
     message.continue_propagation()
 
 
-@app.on_message(Filters.command(['stats', 'stats@inhumanDexBot']))
+@app.on_message(Filters.command(['stats', 'stats@hexa_dex_bot']))
 def get_stats(app, message):
     if message.from_user.id in Config.sudo:
         members = 0
@@ -78,7 +78,7 @@ def get_stats(app, message):
 
 
 # ===== Home =====
-@app.on_message(Filters.command(['start', 'start@inhumanDexBot']))
+@app.on_message(Filters.command(['start', 'start@hexa_dex_bot]))
 def start(app, message):
     app.send_message(
         chat_id=message.chat.id,
@@ -87,7 +87,7 @@ def start(app, message):
     )
 
 # ==== Type Pokemon =====
-@app.on_message(Filters.command(['type', 'type@inhumanDexBot']))
+@app.on_message(Filters.command(['type', 'type@hexa_dex_bot']))
 def ptype(app, message):
     try:
         gtype = message.text.split(' ')[1]
@@ -153,7 +153,7 @@ def ptype_buttons(user_id):
         InlineKeyboardButton('Delete',callback_data=f"hexa_delete_{user_id}")]])
     return keyboard
     
-@app.on_message(Filters.command(['types', 'types@inhumanDexBot']))
+@app.on_message(Filters.command(['types', 'types@hexa_dex_bot']))
 def types(app, message): 
     user_id = message.from_user.id
     app.send_message(
@@ -217,7 +217,7 @@ def button2(client: app, callback_query: CallbackQuery):
         )
   
 # ===== Pokemon Type Command ======
-@app.on_message(Filters.command(['ptype', 'ptype@inhumanDexBot']))
+@app.on_message(Filters.command(['ptype', 'ptype@hexa_dex_bot']))
 def poketypes(app, message): 
     user_id = message.from_user.id
     try:
@@ -314,7 +314,7 @@ def poketypes_back(client: app, callback_query: CallbackQuery):
         
 # ===== Data command =====
 @app.on_callback_query(Filters.create(lambda _, query: 'basic_infos' in query.data))
-@app.on_message(Filters.command(['data', 'data@inhumanDexBot']))
+@app.on_message(Filters.command(['', 'd@hexa_dex_bot']))
 def pkmn_search(app, message):
     try:
         if message.text == '/data' or message.text == '/data@inhumanDexBot':
@@ -375,7 +375,7 @@ def pkmn_search(app, message):
 
 def best_matches(app, message, result):
     text = texts['results']
-    emoji_list = ['1️⃣', '2️⃣', '3️⃣']
+    emoji_list = ['❶', '❷', '❸']
     index = 0
     for dictt in result:
         pkmn = dictt['pkmn']
@@ -389,7 +389,7 @@ def best_matches(app, message, result):
             percentage
         )
         if index == 0:
-            text += ' [<b>⭐️ Top result</b>]'
+            text += ' [<b>Top Result</b>]'
         index += 1
     app.send_message(message.chat.id, text, parse_mode='HTML')
 
@@ -514,7 +514,7 @@ def faq(app, message):
 
 
 # ===== About command =====
-@app.on_message(Filters.command(['about', 'about@inhumanDexBot']))
+@app.on_message(Filters.command(['about', 'about@hexa_dex_bot']))
 def about(app, message):
     text = texts['about']
     markup = InlineKeyboardMarkup([[
@@ -533,15 +533,15 @@ def about(app, message):
 
 
 # ===== Raid commands =====
-@app.on_message(Filters.command(['addcode', 'addcode@inhumanDexBot']))
+@app.on_message(Filters.command(['addcode', 'addcode@hexa_dex_bot']))
 def call_add_fc(app, message):
     raid.add_fc(app, message, texts)
 
-@app.on_message(Filters.command(['mycode', 'mycode@inhumanDexBot']))
+@app.on_message(Filters.command(['mycode', 'mycode@hexa_dex_bot']))
 def call_show_my_fc(app, message):
     raid.show_my_fc(app, message, texts)
 
-@app.on_message(Filters.command(['newraid', 'newraid@inhumanDexBot']))
+@app.on_message(Filters.command(['newraid', 'newraid@hexa_dex_bot']))
 def call_new_raid(app, message):
     raid.new_raid(app, message, texts)
 
