@@ -180,6 +180,28 @@ def tms(app, message):
         disable_web_page_preview=True
     )
 
+#lol
+read=r.get("https://gist.githubusercontent.com/nryadav7412/bc797e2fce05ae3913b9aa48f8edb83c/raw/pokemon.txt").text
+
+@app.on_message(Filters.command(['find', 'find@hexa_dex_bot']))
+def find(app, event,message):
+mon =str(event.pattern_match.group(1))
+    await edit_delete(event,"`guessing...`")
+    if not mon:
+        await edit_delete(event,"Provide A Valid Pokemon Name", time=5)
+        return
+
+    if "_" not in mon:
+        await edit_delete(event,"THAT HINT NOT FROM GUESS")
+        return
+
+    toreplace = {"_": ".", " ": ""}
+    for key, value in toreplace.items():
+        mon = mon.replace(key, value)
+    patt = re.compile(mon)
+    matches = patt.finditer(read)
+    for match in matches:
+          app.send_message(chat_id=message.chat.id,f"{match[0]}")
 
 # ===== Types Callback ====
 @app.on_callback_query(Filters.create(lambda _, query: 'type_' in query.data))
