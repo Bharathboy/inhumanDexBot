@@ -10,7 +10,6 @@ import functions as func
 import raid_dynamax as raid
 
 from Config import Config
-import requests as r
 
 app = Client(
     api_id=Config.aid,
