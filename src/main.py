@@ -162,13 +162,22 @@ def types(app, message):
         reply_markup=InlineKeyboardMarkup(ptype_buttons(user_id))
     )
 
+#tms
 @app.on_message(Filters.command(['tms', 'tms@hexa_dex_bot']))
-def tm(): 
-    user_id = message.from_user.id
+def tms(app, message):
+    text = "TMS INFORMATION"
+    markup = InlineKeyboardMarkup([[
+        InlineKeyboardButton(
+            text='Tms',
+            url='https://telegra.ph/file/8d39d02c47da829199810.png'
+        )
+    ]])
+
     app.send_message(
-        chat_id=message.char.id,
-        text="get tmlist",
-           InlineKeyboardButton('tms',url="https://telegra.ph/file/8d39d02c47da829199810.png")
+        chat_id=message.chat.id,
+        text=text, 
+        reply_markup=markup,
+        disable_web_page_preview=True
     )
 
 
