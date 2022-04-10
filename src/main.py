@@ -385,7 +385,7 @@ def best_matches(app, message, result):
         name = func.form_name(pkmn.title(), form_name)
         text += '\n{} <b>{}</b> (<i>{}</i>)'.format(
             emoji_list[index],
-            `name`,
+           <code>name</code>,
             percentage
         )
         if index == 0:
