@@ -162,6 +162,15 @@ def types(app, message):
         reply_markup=InlineKeyboardMarkup(ptype_buttons(user_id))
     )
 
+@app.on_message(Filters.command(['tms', 'tms@hexa_dex_bot']))
+def tm(): 
+    user_id = message.from_user.id
+    app.send_message(
+        chat_id=message.char.id,
+        text="get tmlist",
+           InlineKeyboardButton('tms',url="https://telegra.ph/file/8d39d02c47da829199810.png")
+
+
 # ===== Types Callback ====
 @app.on_callback_query(Filters.create(lambda _, query: 'type_' in query.data))
 def button(client: app, callback_query: CallbackQuery):
