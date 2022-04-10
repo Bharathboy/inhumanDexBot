@@ -78,7 +78,7 @@ def get_stats(app, message):
 
 
 # ===== Home =====
-@app.on_message(Filters.command(['start', 'start@hexa_dex_bot]))
+@app.on_message(Filters.command(['start', 'start@hexa_dex_bot']))
 def start(app, message):
     app.send_message(
         chat_id=message.chat.id,
@@ -314,10 +314,10 @@ def poketypes_back(client: app, callback_query: CallbackQuery):
         
 # ===== Data command =====
 @app.on_callback_query(Filters.create(lambda _, query: 'basic_infos' in query.data))
-@app.on_message(Filters.command(['', 'd@hexa_dex_bot']))
+@app.on_message(Filters.command(['d', 'data@hexa_dex_bot']))
 def pkmn_search(app, message):
     try:
-        if message.text == '/data' or message.text == '/data@inhumanDexBot':
+        if message.text == '/d' or message.text == '/data@inhumanDexBot':
             app.send_message(message.chat.id, texts['error1'], parse_mode='HTML')
             return None
         pkmn = func.find_name(message.text)
