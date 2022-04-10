@@ -225,8 +225,8 @@ def poketypes(app, message):
     except IndexError:
         app.send_message(
             chat_id=message.chat.id,
-            text=("Where is pokemon name? \n
-                eg:`/ptype Pikachu`")
+            text=("Where is pokemon name? \n"
+                "eg:`/ptype Pikachu`")
         )
         return  
     try:
