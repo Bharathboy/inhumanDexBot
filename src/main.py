@@ -402,7 +402,7 @@ def best_matches(app, message, result):
         percentage = dictt['percentage']
         form_name = data[pkmn][form]['name']
         name = func.form_name(pkmn.title(), form_name)
-        text += '\n{} <b>{}</b> (<i>{}</i>)'.format(
+        text += '\n{} <code>{}</code> (<i>{}</i>)'.format(
             emoji_list[index],
             name,
             percentage
