@@ -538,8 +538,8 @@ def about(app, message):
     text = texts['about']
     markup = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text='Github',
-            url='https://github.com/alessiocelentano/rotomgram'
+            text='play hexa',
+            url='https://t.me/HeXamonbot?start=1kc8uilj0zg6e'
         )
     ]])
 
