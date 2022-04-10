@@ -225,8 +225,8 @@ def poketypes(app, message):
     except IndexError:
         app.send_message(
             chat_id=message.chat.id,
-            text=("`Syntex error: use eg '/ptype pokemon_name'`\n"
-                  "`eg /ptype Pikachu`")
+            text=("Where is pokemon name? \n
+                eg:`/ptype Pikachu`")
         )
         return  
     try:
@@ -375,7 +375,7 @@ def pkmn_search(app, message):
 
 def best_matches(app, message, result):
     text = texts['results']
-    emoji_list = ['❶', '❷', '❸']
+    emoji_list = ['❶.', '❷.', '❸.']
     index = 0
     for dictt in result:
         pkmn = dictt['pkmn']
@@ -385,7 +385,7 @@ def best_matches(app, message, result):
         name = func.form_name(pkmn.title(), form_name)
         text += '\n{} <b>{}</b> (<i>{}</i>)'.format(
             emoji_list[index],
-            name,
+            `name`,
             percentage
         )
         if index == 0:
