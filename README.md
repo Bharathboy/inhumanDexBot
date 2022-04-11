@@ -1,37 +1,70 @@
-![Logo](assets/logo.png)
+# HEXA_INFO_SOBOT - chat bot
+It is repository for chat bot: [@HEXA_INFO_SOBOT](https://t.me/HEXA_INFO_SOBOT)
 
-## What is Rotomgram?
-Rotomgram is a Telegram Bot that provides all informations about Pokémon. It's accessible through this link https://t.me/RotomgramBot or writing @RotomgramBot on Telegram search bar
+A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
 
-## Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+## Create your own bot for Telegram from this Git repo
 
-## How it works?
-The bot has 3 main commands:
+How to create bot?
+1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
+2. Create bot in App and add Secret Token
+3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
+4. Do import for this git repo
 
-### /data
-/data is the main command of the bot acts as Pokedex on Telegram. Writing "/data PokemonName", it returns:
-* Main data (Name, Dex number, Type, Ability)
-* Other informations about it (such as EV yield, catch rate, egg groups, etc) accessible through "Expand" inline button
-* Base stats
-* Official artwork
-* Moveset
-* Location
-* Minimum/Maximum statistics at level 100e
-* Evolutionary methods
-* Alternative forms informations
-* Infos about its alternative forms
+Now you can talk with yours new Telegram Bot
 
-### /newraid
-This command provides a tool for manage Pokemon Sword & Shield Raid Dynamax. Using "/newraid PokemonName", you can search for players in a group. When the Raid it's ready, clicking on "Close" it generate a random password visible at only the participants of the Raid.
+See [more](https://help.bots.business/getting-started)
 
-### /usage
-Finally, this command is very easy. It simply returns VGC usage
+## Commands - in commands folder
+File name - it is command name (Bot it can be rewritten in command description)
 
-## Credits
-APIs have not been used to build this bot. So, some thanks are due:
-* PokémonDB (pokemondb.net) for their data
-* Smogon (smogon.com) for VGC usage
+Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
 
-## Support
-If you need me, you can contact me sending me an e-mail at alessiocelentano2003@gmail.com or sending a message on Telegram at https://t.me/alessiocelentano (@alessiocelentano on the app)
+### Command description
+It is file header:
+
+    /*CMD
+      command: /test
+      help: this is help for ccommand
+      need_reply: [ true or false here ]
+      auto_retry_time: [ time in sec ]
+      answer: it is example answer for /test command
+      keyboard: button1, button2
+      aliases: /test2, /test3
+    CMD*/
+
+See [more](https://help.bots.business/commands)
+
+### Command body
+It is command code in JavaScript.
+Use Bot Java Script for logic in command.
+
+For example:
+> Bot.sendMessage(2+2);
+
+See [more](https://help.bots.business/scenarios-and-bjs)
+
+
+## Libraries - in libs folder
+You can store common code in the libs folder. File name - it is library name.
+
+For example code in myLib.js:
+
+    function hello(){ Bot.sendMessage("Hello from lib!") }
+    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
+
+    publish({
+      sayHello: hello,
+      sayGoodbyeTo: goodbye
+    })
+
+then you can run in any bot's command:
+
+    Libs.myLib.hello()
+    Libs.myLib.sayGoodbyeTo("Alice")
+
+See [more](https://help.bots.business/git/library)
+
+## Other bots example
+See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) 
+
