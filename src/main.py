@@ -111,7 +111,7 @@ def poke(app, message):
             chat_id=message.chat.id,
             text="THAT HINT NOT FROM GUESS"
         )
-        ##return
+        return
     toreplace = {"_": ".", " ": ""}
     for key, value in toreplace.items():
         mon = mon.replace(key, value)
@@ -121,7 +121,7 @@ def poke(app, message):
             app.send_message(
                 chat_id=message.chat.id,
                 text=match[0],
-            )##
+            )
 
 # ==== Type Pokemon =====
 @app.on_message(Filters.command(['type', 'type@hexa_dex_bot']))
