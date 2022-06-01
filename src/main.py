@@ -642,4 +642,4 @@ def bot_added(app, message):
             )
 
 
-app.run(
+app.run()
