@@ -139,8 +139,8 @@ def ptype(app, message):
     except KeyError as s:
         app.send_message(
             chat_id=message.chat.id,
-            text=("`This type doesn't exist good sir :/ `\n"
-                  "`Do  /types  to check for the existing types.`")
+            text=("This type doesn't exist sir :\n"
+                  "Do  `/types`  to check for the existing types.")
         )
         return
     strong_against = ", ".join(data['strong_against'])
